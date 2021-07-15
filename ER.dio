@@ -91,7 +91,7 @@
                 <mxCell id="63" value="telephone_number" style="text;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;spacing=0;strokeColor=#FFFFFF;fontColor=#FFFFFF;" vertex="1" parent="54">
                     <mxGeometry y="240" width="240" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="109" value="shipping_records" style="text;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;spacing=0;strokeColor=#FFFFFF;fontColor=#FFFFFF;" vertex="1" parent="54">
+                <mxCell id="109" value="shipping_record" style="text;fillColor=none;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontSize=24;spacing=0;strokeColor=#FFFFFF;fontColor=#FFFFFF;" vertex="1" parent="54">
                     <mxGeometry y="280" width="240" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="99" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERmany;endFill=0;endSize=24;startSize=24;startArrow=ERone;startFill=0;fontSize=24;spacing=0;strokeColor=#FFFFFF;fontColor=#FFFFFF;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="32" target="48">
