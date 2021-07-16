@@ -33,7 +33,7 @@ RSpec.describe User, type: :model do
       it 'emailには@を含む必要があること' do
         @user.email = 'testexample'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
       it 'passwordが空だと保存できないこと' do
         @user.password = ''
@@ -50,7 +50,7 @@ RSpec.describe User, type: :model do
         @user.password = 'aaaaaa'
         @user.password_confirmation = 'aaaaaa'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid. Input must contain both alphameric and numeric characters.")
+        expect(@user.errors.full_messages).to include('Password is invalid. Input must contain both alphameric and numeric characters.')
       end
       it 'passwordとpassword_confirmationが異なると登録できないこと' do
         @user.password = 'aaa000'
