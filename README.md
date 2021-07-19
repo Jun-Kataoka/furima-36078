@@ -15,11 +15,11 @@
 
 ### Association
 
-- has_many :products
-- has_many :shipping_records
+- has_many :items
+- has_many :orders
 
 
-## products テーブル
+## items テーブル
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
@@ -36,10 +36,10 @@
 ### Association
 
 -belongs_to :user
--has_one :shipping_record
+-has_one :orders
 
 
-## shipping_addresses テーブル
+## address テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
@@ -49,22 +49,22 @@
 | house_number     | string     | null: false                    |
 | building_name    | string     |                                |
 | telephone_number | string     | null: false                    |
-| shipping_record  | references | null: false, foreign_key: true |
+| orders           | references | null: false, foreign_key: true |
 
 ### Association
 
--belongs_to :shipping_record
+-belongs_to :orders
 
 
-## shipping_records テーブル
+## orders テーブル
 
-| Column           | Type       | Options                        |
-| ---------------- | ---------- | ------------------------------ |
-| user             | references | null: false, foreign_key: true |
-| product          | references | null: false, foreign_key: true |
+| Column | Type       | Options                        |
+| ------ | ---------- | ------------------------------ |
+| user   | references | null: false, foreign_key: true |
+| items  | references | null: false, foreign_key: true |
 
 ### Association
 
 -belongs_to :user
--belongs_to :product
--has_one :shipping_address
+-belongs_to :items
+-has_one :address
