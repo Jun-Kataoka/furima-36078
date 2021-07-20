@@ -8,17 +8,18 @@ class Item < ApplicationRecord
   belongs_to :period
   belongs_to :user
 
-  validates :image, presence: true
-  validates :name, presence: true, length: { maximum: 40 }
-  validates :caption, presence: true, length: { maximum: 1000 }
-  validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :fee_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
-  validates :period_id, numericality: { other_than: 1, message: "can't be blank" }
-  validates :price, presence: true,
-                    numericality: { greater_than_or_equal_to: 300,
-                                    less_than_or_equal_to: 9_999_999,
-                                    allow_blank: true,
-                                    message: 'is invalid. Input  range of 300 to 9999999 numeric characters.' }
+  with_options presence: true do
+    validates :image
+    validates :name, length: { maximum: 40 }
+    validates :caption, length: { maximum: 1000 }
+    validates :category_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :condition_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :fee_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
+    validates :period_id, numericality: { other_than: 1, message: "can't be blank" }
+    validates :price, numericality: { greater_than_or_equal_to: 300,
+                                      less_than_or_equal_to: 9_999_999,
+                                      allow_blank: true,
+                                      message: 'is invalid. Input  range of 300 to 9999999 numeric characters.' }
+  end
 end

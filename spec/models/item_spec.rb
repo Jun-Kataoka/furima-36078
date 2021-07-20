@@ -60,15 +60,39 @@ RSpec.describe Item, type: :model do
       end
 
       it 'priceが300未満であれば登録できないこと' do
-        @item.price = '299'
+        @item.price = 299
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is invalid. Input  range of 300 to 9999999 numeric characters.')
       end
 
       it 'priceが10000000以上であれば登録できないこと' do
-        @item.price = '10000000'
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is invalid. Input  range of 300 to 9999999 numeric characters.')
+      end
+
+      it 'priceが全角文字では登録できないこと' do
+        @item.price = '１００００'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is invalid. Input  range of 300 to 9999999 numeric characters.')
+      end
+
+      it 'priceが英数字混合では登録できないこと' do
+        @item.price = '300a'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is invalid. Input  range of 300 to 9999999 numeric characters.')
+      end
+
+      it 'priceが半角英字では登録できないこと' do
+        @item.price = 'abc'
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Price is invalid. Input  range of 300 to 9999999 numeric characters.')
+      end
+
+      it 'ユーザー情報がない場合は登録できないこと' do
+        @item.user = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include('User must exist')
       end
     end
   end
