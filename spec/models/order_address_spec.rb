@@ -28,7 +28,7 @@ RSpec.describe OrderAddress, type: :model do
       it 'postal_codeが半角のハイフンを含んだ正しい形式でないと保存できないこと' do
         @order_address.postal_code = '1234567'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Postal code is invalid. Enter it as follows (e.g. 123-4567)")
+        expect(@order_address.errors.full_messages).to include('Postal code is invalid. Enter it as follows (e.g. 123-4567)')
       end
       it 'prefecture_idを選択していないと保存できないこと' do
         @order_address.prefecture_id = ''
@@ -58,17 +58,17 @@ RSpec.describe OrderAddress, type: :model do
       it 'telephone_numberが全角数字だと保存できないこと' do
         @order_address.telephone_number = '０９０１２３４５６７８'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Telephone number is invalid. Input only number")
+        expect(@order_address.errors.full_messages).to include('Telephone number is invalid. Input only number')
       end
       it 'telephone_numberが9桁以下だと保存できないこと' do
         @order_address.telephone_number = '090123456'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Telephone number is too short")
+        expect(@order_address.errors.full_messages).to include('Telephone number is too short')
       end
       it 'telephone_numberが12桁以上だと保存できないこと' do
         @order_address.telephone_number = '090123456789'
         @order_address.valid?
-        expect(@order_address.errors.full_messages).to include("Telephone number is too short")
+        expect(@order_address.errors.full_messages).to include('Telephone number is too short')
       end
       it 'userが紐付いていないと保存できないこと' do
         @order_address.user_id = ''
