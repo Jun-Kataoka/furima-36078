@@ -36,7 +36,7 @@ RSpec.describe OrderAddress, type: :model do
         expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
       end
       it 'prefecture_idが0では保存できないこと' do
-        @order_address.prefecture_id = '0'
+        @order_address.prefecture_id = 0
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include("Prefecture can't be blank")
       end
@@ -60,6 +60,11 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Telephone number is invalid. Input only number')
       end
+      it 'telephone_numberが英数混合だと保存できないこと' do
+        @order_address.telephone_number = '0a0b1c2d3e4'
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include('Telephone number is invalid. Input only number')
+      end
       it 'telephone_numberが9桁以下だと保存できないこと' do
         @order_address.telephone_number = '090123456'
         @order_address.valid?
@@ -69,6 +74,11 @@ RSpec.describe OrderAddress, type: :model do
         @order_address.telephone_number = '090123456789'
         @order_address.valid?
         expect(@order_address.errors.full_messages).to include('Telephone number is too short')
+      end
+      it 'tokenが空だと保存できないこと' do
+        @order_address.token = ''
+        @order_address.valid?
+        expect(@order_address.errors.full_messages).to include("Token can't be blank")
       end
       it 'userが紐付いていないと保存できないこと' do
         @order_address.user_id = ''

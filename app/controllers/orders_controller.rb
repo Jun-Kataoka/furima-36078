@@ -25,9 +25,7 @@ class OrdersController < ApplicationController
   end
 
   def user_induction
-    redirect_to root_path unless user_signed_in?
-    redirect_to root_path if user_signed_in? && current_user.id == @item.user_id
-    redirect_to root_path if user_signed_in? && Order.where(item_id: @item.id).count != 0
+    redirect_to root_path if user_signed_in? && (current_user.id == @item.user_id || Order.where(item_id: @item.id).count != 0)
   end
 
   def order_params
@@ -37,7 +35,7 @@ class OrdersController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = 'sk_test_f8221797a81ff3db21e2daca'
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
     Payjp::Charge.create(
       amount: @item.price,
       card: order_params[:token],
