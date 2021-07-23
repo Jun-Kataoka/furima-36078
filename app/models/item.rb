@@ -7,6 +7,7 @@ class Item < ApplicationRecord
   belongs_to :prefecture
   belongs_to :period
   belongs_to :user
+  has_one :orders
 
   with_options presence: true do
     validates :image
