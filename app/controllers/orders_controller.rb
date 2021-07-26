@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
   end
 
   def user_induction
-    redirect_to root_path if current_user.id == @item.user_id || Order.where(item_id: @item.id).count != 0
+    redirect_to root_path if Order.where(item_id: @item.id).count != 0 || current_user.id == @item.user_id
   end
 
   def order_params
